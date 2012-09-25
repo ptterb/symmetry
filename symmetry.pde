@@ -33,7 +33,7 @@ void setup() {
 
 void draw() {
   
-  if (playback == false) {
+  if (!playback) {
    fill(255);
       // draw points at mouse coords when mouse is clicked. Also draw point at reflected x coords
       fill(R,mouseY%255, B);
@@ -61,14 +61,14 @@ void draw() {
   }
 
   // This is triggered when the user presses the 'P' key, for playback
-  if (playback == true) {
+  if (playback) {
 
     //  Check to see if a second has passed since the last run. Used to space out the drawing
     if (millis() - lastDraw > delay) {
 
       // Draw circle for endpoint at position held in array, and on the mirrored side as well
-      fill(104,pointsY[i]%255, 177);
-      stroke(104,pointsY[i]%255, 177);
+      fill(R,pointsY[i]%255, B);
+      stroke(R,pointsY[i]%255, B);
       ellipse(pointsX[i], pointsY[i], circleSize, circleSize);
 
       // width - point is used to mirror the points onto the right side of window
@@ -77,8 +77,8 @@ void draw() {
       //stroke(255);
 
       // connect dots with lines on each side of reflection
-      line(pointsX[i-1], pointsY[i-1], pointsX[i], pointsY[i]);
-      line(width-pointsX[i-1], pointsY[i-1], width-pointsX[i], pointsY[i]);
+//      line(pointsX[i-1], pointsY[i-1], pointsX[i], pointsY[i]);
+//      line(width-pointsX[i-1], pointsY[i-1], width-pointsX[i], pointsY[i]);
 
       // increment iterator
       i = i + 1;
